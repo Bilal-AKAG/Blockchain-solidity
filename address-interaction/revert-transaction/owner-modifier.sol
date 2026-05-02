@@ -1,4 +1,3 @@
-// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
 contract Contract {
@@ -25,7 +24,6 @@ contract Contract {
 
     modifier onlyOwner() {
         require(msg.sender == owner);
-        // underscore runs the function body
         _;
     }
 }

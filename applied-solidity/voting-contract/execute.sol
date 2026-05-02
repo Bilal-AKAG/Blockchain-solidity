@@ -1,4 +1,3 @@
-// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
 contract Voting {
@@ -44,7 +43,6 @@ contract Voting {
         require(members[msg.sender]);
         Proposal storage proposal = proposals[_proposalId];
 
-        // clear out previous vote
         if (proposal.voteStates[msg.sender] == VoteStates.Yes) {
             proposal.yesCount--;
         }
@@ -52,15 +50,12 @@ contract Voting {
             proposal.noCount--;
         }
 
-        // add new vote
         if (_supports) {
             proposal.yesCount++;
         } else {
             proposal.noCount++;
         }
 
-        // we're tracking whether or not someone has already voted
-        // and we're keeping track as well of what they voted
         proposal.voteStates[msg.sender] = _supports
             ? VoteStates.Yes
             : VoteStates.No;
